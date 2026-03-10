@@ -1,0 +1,92 @@
+import java.util.*;
+import java.util.function.*;
+
+/*
+=====================================================
+Day 28 - Lambda Expressions Practice
+Topics:
+Lambda Basics
+Functional Interfaces
+Built-in Functional Interfaces
+Method Reference
+=====================================================
+*/
+
+interface Calculator {
+    int operation(int a, int b);
+}
+
+public class Day28_LambdaExpressions {
+
+    public static void main(String[] args) {
+
+        System.out.println("Lambda Expressions Practice");
+
+        /*
+        Example 1
+        Lambda for Addition
+        */
+
+        Calculator add = (a,b) -> a + b;
+        System.out.println("Addition: " + add.operation(10,20));
+
+        /*
+        Example 2
+        Lambda for Multiplication
+        */
+
+        Calculator multiply = (a,b) -> a * b;
+        System.out.println("Multiplication: " + multiply.operation(5,6));
+
+
+        /*
+        Example 3
+        Using Predicate
+        */
+
+        Predicate<Integer> isEven = n -> n % 2 == 0;
+
+        System.out.println("Is 10 even? " + isEven.test(10));
+        System.out.println("Is 7 even? " + isEven.test(7));
+
+
+        /*
+        Example 4
+        Using Consumer
+        */
+
+        Consumer<String> printer = msg -> System.out.println(msg);
+        printer.accept("Learning Lambda Expressions");
+
+
+        /*
+        Example 5
+        Using Function
+        */
+
+        Function<Integer,Integer> square = x -> x * x;
+        System.out.println("Square of 6: " + square.apply(6));
+
+
+        /*
+        Example 6
+        Method Reference
+        */
+
+        List<String> names = Arrays.asList("Shalini","Rahul","Aman","Priya");
+
+        names.forEach(System.out::println);
+
+
+        /*
+        Example 7
+        Sorting using Lambda
+        */
+
+        List<Integer> numbers = Arrays.asList(5,2,8,1,9);
+
+        numbers.sort((a,b) -> a - b);
+
+        System.out.println("Sorted numbers: " + numbers);
+    }
+}
