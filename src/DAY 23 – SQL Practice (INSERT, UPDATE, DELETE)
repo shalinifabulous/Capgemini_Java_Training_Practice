@@ -1,0 +1,198 @@
+/*
+============================================================
+DAY 23 - SQL PRACTICE (MYSQL)
+Topics Covered:
+INSERT
+UPDATE
+DELETE
+NULL values
+IS NULL / IS NOT NULL
+============================================================
+*/
+
+/*
+We will continue using the same employees table
+If table does not exist run this again
+*/
+
+CREATE TABLE employees (
+    emp_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department VARCHAR(50),
+    salary INT,
+    age INT,
+    city VARCHAR(50)
+);
+
+
+/*
+============================================================
+QUESTION 1
+Insert a new employee record
+============================================================
+*/
+
+INSERT INTO employees
+VALUES (11,'Ankit','IT',65000,26,'Noida');
+
+
+/*
+============================================================
+QUESTION 2
+Insert another employee using column names
+============================================================
+*/
+
+INSERT INTO employees (emp_id,name,department,salary,age,city)
+VALUES (12,'Riya','HR',52000,23,'Delhi');
+
+
+/*
+============================================================
+QUESTION 3
+Insert multiple records at once
+============================================================
+*/
+
+INSERT INTO employees VALUES
+(13,'Suresh','Finance',75000,31,'Mumbai'),
+(14,'Kavita','IT',68000,27,'Bangalore'),
+(15,'Tarun','HR',50000,24,'Pune');
+
+
+/*
+============================================================
+QUESTION 4
+Insert employee with NULL value in city
+============================================================
+*/
+
+INSERT INTO employees
+VALUES (16,'Vikas','IT',62000,25,NULL);
+
+
+/*
+============================================================
+QUESTION 5
+Display employees where city is NULL
+============================================================
+*/
+
+SELECT *
+FROM employees
+WHERE city IS NULL;
+
+
+/*
+============================================================
+QUESTION 6
+Display employees where city is NOT NULL
+============================================================
+*/
+
+SELECT *
+FROM employees
+WHERE city IS NOT NULL;
+
+
+/*
+============================================================
+QUESTION 7
+Update salary of employee with id = 11
+============================================================
+*/
+
+UPDATE employees
+SET salary = 70000
+WHERE emp_id = 11;
+
+
+/*
+============================================================
+QUESTION 8
+Increase salary of all IT employees by 5000
+============================================================
+*/
+
+UPDATE employees
+SET salary = salary + 5000
+WHERE department = 'IT';
+
+
+/*
+============================================================
+QUESTION 9
+Change city of employee 'Riya' to Mumbai
+============================================================
+*/
+
+UPDATE employees
+SET city = 'Mumbai'
+WHERE name = 'Riya';
+
+
+/*
+============================================================
+QUESTION 10
+Update department from HR to Human Resources
+============================================================
+*/
+
+UPDATE employees
+SET department = 'Human Resources'
+WHERE department = 'HR';
+
+
+/*
+============================================================
+QUESTION 11
+Delete employee with emp_id = 15
+============================================================
+*/
+
+DELETE FROM employees
+WHERE emp_id = 15;
+
+
+/*
+============================================================
+QUESTION 12
+Delete employees whose salary is less than 50000
+============================================================
+*/
+
+DELETE FROM employees
+WHERE salary < 50000;
+
+
+/*
+============================================================
+QUESTION 13
+Delete employees whose city is NULL
+============================================================
+*/
+
+DELETE FROM employees
+WHERE city IS NULL;
+
+
+/*
+============================================================
+QUESTION 14
+Display all remaining records
+============================================================
+*/
+
+SELECT *
+FROM employees;
+
+
+/*
+============================================================
+QUESTION 15
+Count number of employees remaining in table
+============================================================
+*/
+
+SELECT COUNT(*) AS total_employees
+FROM employees;
