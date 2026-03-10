@@ -1,0 +1,246 @@
+/*
+=========================================================
+DAY 25 - SQL PRACTICE (MYSQL)
+Topics Covered
+COUNT()
+SUM()
+AVG()
+MIN()
+MAX()
+GROUP BY
+HAVING
+=========================================================
+*/
+
+
+/*
+=========================================================
+Create Table for Practice
+=========================================================
+*/
+
+CREATE TABLE employees(
+emp_id INT PRIMARY KEY,
+name VARCHAR(50),
+department VARCHAR(50),
+salary INT,
+age INT,
+city VARCHAR(50)
+);
+
+
+
+/*
+=========================================================
+Insert Sample Data
+=========================================================
+*/
+
+INSERT INTO employees VALUES
+(1,'Shalini','IT',70000,22,'Delhi'),
+(2,'Rahul','HR',50000,25,'Mumbai'),
+(3,'Aman','IT',65000,24,'Delhi'),
+(4,'Neha','Finance',72000,28,'Pune'),
+(5,'Karan','IT',60000,26,'Bangalore'),
+(6,'Priya','HR',52000,23,'Mumbai'),
+(7,'Rohit','Finance',75000,30,'Delhi'),
+(8,'Simran','IT',80000,27,'Chennai'),
+(9,'Arjun','HR',48000,24,'Pune'),
+(10,'Megha','Finance',77000,29,'Delhi');
+
+
+
+/*
+=========================================================
+QUESTION 1
+Find total number of employees
+=========================================================
+*/
+
+SELECT COUNT(*) AS total_employees
+FROM employees;
+
+
+
+/*
+=========================================================
+QUESTION 2
+Find total salary paid to employees
+=========================================================
+*/
+
+SELECT SUM(salary) AS total_salary
+FROM employees;
+
+
+
+/*
+=========================================================
+QUESTION 3
+Find average salary of employees
+=========================================================
+*/
+
+SELECT AVG(salary) AS average_salary
+FROM employees;
+
+
+
+/*
+=========================================================
+QUESTION 4
+Find highest salary in the company
+=========================================================
+*/
+
+SELECT MAX(salary) AS highest_salary
+FROM employees;
+
+
+
+/*
+=========================================================
+QUESTION 5
+Find lowest salary in the company
+=========================================================
+*/
+
+SELECT MIN(salary) AS lowest_salary
+FROM employees;
+
+
+
+/*
+=========================================================
+QUESTION 6
+Find number of employees in each department
+=========================================================
+*/
+
+SELECT department, COUNT(*) AS total_employees
+FROM employees
+GROUP BY department;
+
+
+
+/*
+=========================================================
+QUESTION 7
+Find total salary paid in each department
+=========================================================
+*/
+
+SELECT department, SUM(salary) AS department_salary
+FROM employees
+GROUP BY department;
+
+
+
+/*
+=========================================================
+QUESTION 8
+Find average salary in each department
+=========================================================
+*/
+
+SELECT department, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department;
+
+
+
+/*
+=========================================================
+QUESTION 9
+Find highest salary in each department
+=========================================================
+*/
+
+SELECT department, MAX(salary) AS highest_salary
+FROM employees
+GROUP BY department;
+
+
+
+/*
+=========================================================
+QUESTION 10
+Find lowest salary in each department
+=========================================================
+*/
+
+SELECT department, MIN(salary) AS lowest_salary
+FROM employees
+GROUP BY department;
+
+
+
+/*
+=========================================================
+QUESTION 11
+Find departments where average salary is greater than 65000
+=========================================================
+*/
+
+SELECT department, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department
+HAVING AVG(salary) > 65000;
+
+
+
+/*
+=========================================================
+QUESTION 12
+Find departments with more than 2 employees
+=========================================================
+*/
+
+SELECT department, COUNT(*) AS employee_count
+FROM employees
+GROUP BY department
+HAVING COUNT(*) > 2;
+
+
+
+/*
+=========================================================
+QUESTION 13
+Find cities where more than one employee lives
+=========================================================
+*/
+
+SELECT city, COUNT(*) AS total_people
+FROM employees
+GROUP BY city
+HAVING COUNT(*) > 1;
+
+
+
+/*
+=========================================================
+QUESTION 14
+Find department having maximum average salary
+=========================================================
+*/
+
+SELECT department, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department
+ORDER BY avg_salary DESC
+LIMIT 1;
+
+
+
+/*
+=========================================================
+QUESTION 15
+Find department where total salary expenditure is highest
+=========================================================
+*/
+
+SELECT department, SUM(salary) AS total_salary
+FROM employees
+GROUP BY department
+ORDER BY total_salary DESC
+LIMIT 1;
