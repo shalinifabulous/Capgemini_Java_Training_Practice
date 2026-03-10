@@ -1,0 +1,184 @@
+
+==================================================
+DAY 22 - SQL PRACTICE (MYSQL)
+Topics Covered:
+SELECT
+WHERE
+DISTINCT
+ORDER BY
+LIMIT
+Basic Filtering
+==================================================
+
+
+/*
+Create Sample Table
+This table will be used for all queries below
+*/
+
+CREATE TABLE employees (
+    emp_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department VARCHAR(50),
+    salary INT,
+    age INT,
+    city VARCHAR(50)
+);
+
+/* Insert sample data */
+
+INSERT INTO employees VALUES
+(1,'Shalini','IT',70000,22,'Delhi'),
+(2,'Rahul','HR',50000,25,'Mumbai'),
+(3,'Aman','IT',65000,24,'Delhi'),
+(4,'Neha','Finance',72000,28,'Pune'),
+(5,'Karan','IT',60000,26,'Bangalore'),
+(6,'Priya','HR',52000,23,'Mumbai'),
+(7,'Rohit','Finance',75000,30,'Delhi'),
+(8,'Simran','IT',80000,27,'Chennai'),
+(9,'Arjun','HR',48000,24,'Pune'),
+(10,'Megha','Finance',77000,29,'Delhi');
+
+
+/* ==================================================
+QUESTION 1
+Display all employee records
+================================================== */
+
+SELECT * FROM employees;
+
+
+/* ==================================================
+QUESTION 2
+Display only employee names
+================================================== */
+
+SELECT name FROM employees;
+
+
+/* ==================================================
+QUESTION 3
+Display name and salary of employees
+================================================== */
+
+SELECT name, salary FROM employees;
+
+
+/* ==================================================
+QUESTION 4
+Find employees who belong to IT department
+================================================== */
+
+SELECT * 
+FROM employees
+WHERE department = 'IT';
+
+
+/* ==================================================
+QUESTION 5
+Find employees with salary greater than 70000
+================================================== */
+
+SELECT name, salary
+FROM employees
+WHERE salary > 70000;
+
+
+/* ==================================================
+QUESTION 6
+Find employees whose age is less than 25
+================================================== */
+
+SELECT *
+FROM employees
+WHERE age < 25;
+
+
+/* ==================================================
+QUESTION 7
+Find employees living in Delhi
+================================================== */
+
+SELECT name, city
+FROM employees
+WHERE city = 'Delhi';
+
+
+/* ==================================================
+QUESTION 8
+Find employees whose salary is between 60000 and 75000
+================================================== */
+
+SELECT name, salary
+FROM employees
+WHERE salary BETWEEN 60000 AND 75000;
+
+
+/* ==================================================
+QUESTION 9
+Find employees whose department is either IT or HR
+================================================== */
+
+SELECT *
+FROM employees
+WHERE department IN ('IT','HR');
+
+
+/* ==================================================
+QUESTION 10
+Find employees whose name starts with 'S'
+================================================== */
+
+SELECT *
+FROM employees
+WHERE name LIKE 'S%';
+
+
+/* ==================================================
+QUESTION 11
+Find employees whose name ends with 'a'
+================================================== */
+
+SELECT *
+FROM employees
+WHERE name LIKE '%a';
+
+
+/* ==================================================
+QUESTION 12
+Display unique cities where employees live
+================================================== */
+
+SELECT DISTINCT city
+FROM employees;
+
+
+/* ==================================================
+QUESTION 13
+Display employees sorted by salary in ascending order
+================================================== */
+
+SELECT *
+FROM employees
+ORDER BY salary ASC;
+
+
+/* ==================================================
+QUESTION 14
+Display employees sorted by salary in descending order
+================================================== */
+
+SELECT *
+FROM employees
+ORDER BY salary DESC;
+
+
+/* ==================================================
+QUESTION 15
+Display top 5 highest paid employees
+================================================== */
+
+SELECT *
+FROM employees
+ORDER BY salary DESC
+LIMIT 5;
