@@ -1,0 +1,47 @@
+import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+=============================================
+Day 34 - Mockito Testing
+Mocking dependencies
+=============================================
+*/
+
+class UserRepository {
+
+    String getUserName(int id){
+        return "RealUser";
+    }
+}
+
+class UserService {
+
+    UserRepository repo;
+
+    UserService(UserRepository repo){
+        this.repo = repo;
+    }
+
+    String fetchUser(int id){
+        return repo.getUserName(id);
+    }
+}
+
+public class UserServiceTest {
+
+    @Test
+    void testFetchUser(){
+
+        UserRepository mockRepo = mock(UserRepository.class);
+
+        when(mockRepo.getUserName(1)).thenReturn("Shalini");
+
+        UserService service = new UserService(mockRepo);
+
+        String name = service.fetchUser(1);
+
+        assertEquals("Shalini", name);
+    }
+}
