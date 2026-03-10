@@ -1,0 +1,86 @@
+import java.util.*;
+import java.util.stream.*;
+
+/*
+=====================================================
+Day 29 - Stream API Practice
+Topics:
+Stream Basics
+Filter
+Map
+Reduce
+Collect
+=====================================================
+*/
+
+public class Day29_StreamAPI {
+
+    public static void main(String[] args) {
+
+        List<Integer> numbers =
+                Arrays.asList(2,4,5,7,8,10,12);
+
+        /*
+        Example 1
+        Filtering even numbers
+        */
+
+        List<Integer> evens =
+                numbers.stream()
+                        .filter(n -> n % 2 == 0)
+                        .collect(Collectors.toList());
+
+        System.out.println("Even numbers: " + evens);
+
+
+        /*
+        Example 2
+        Squaring numbers
+        */
+
+        List<Integer> squares =
+                numbers.stream()
+                        .map(n -> n*n)
+                        .collect(Collectors.toList());
+
+        System.out.println("Squares: " + squares);
+
+
+        /*
+        Example 3
+        Reduce operation
+        */
+
+        int sum =
+                numbers.stream()
+                        .reduce(0,(a,b) -> a+b);
+
+        System.out.println("Sum: " + sum);
+
+
+        /*
+        Example 4
+        Sorting using stream
+        */
+
+        List<Integer> sorted =
+                numbers.stream()
+                        .sorted()
+                        .collect(Collectors.toList());
+
+        System.out.println("Sorted: " + sorted);
+
+
+        /*
+        Example 5
+        Finding maximum
+        */
+
+        int max =
+                numbers.stream()
+                        .max(Integer::compare)
+                        .get();
+
+        System.out.println("Maximum number: " + max);
+    }
+}
