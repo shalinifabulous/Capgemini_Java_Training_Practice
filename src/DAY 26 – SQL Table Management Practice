@@ -1,0 +1,182 @@
+/*
+=========================================================
+DAY 26 - SQL PRACTICE (MYSQL)
+Topics Covered
+CREATE DATABASE
+CREATE TABLE
+PRIMARY KEY
+CONSTRAINT
+ALTER TABLE
+DROP TABLE
+NULL / NOT NULL
+=========================================================
+*/
+
+
+/*
+=========================================================
+QUESTION 1
+Create a database named company_db
+=========================================================
+*/
+
+CREATE DATABASE company_db;
+
+
+/*
+=========================================================
+QUESTION 2
+Use the database company_db
+=========================================================
+*/
+
+USE company_db;
+
+
+/*
+=========================================================
+QUESTION 3
+Create table departments
+=========================================================
+*/
+
+CREATE TABLE departments(
+dept_id INT PRIMARY KEY,
+dept_name VARCHAR(50)
+);
+
+
+/*
+=========================================================
+QUESTION 4
+Create table employees with constraints
+=========================================================
+*/
+
+CREATE TABLE employees(
+emp_id INT PRIMARY KEY,
+name VARCHAR(50) NOT NULL,
+salary INT,
+department VARCHAR(50),
+age INT
+);
+
+
+/*
+=========================================================
+QUESTION 5
+Insert records into employees table
+=========================================================
+*/
+
+INSERT INTO employees VALUES
+(1,'Shalini',70000,'IT',22),
+(2,'Rahul',50000,'HR',25),
+(3,'Aman',65000,'IT',24);
+
+
+/*
+=========================================================
+QUESTION 6
+Add a new column city to employees table
+=========================================================
+*/
+
+ALTER TABLE employees
+ADD city VARCHAR(50);
+
+
+/*
+=========================================================
+QUESTION 7
+Modify salary column datatype
+=========================================================
+*/
+
+ALTER TABLE employees
+MODIFY salary DECIMAL(10,2);
+
+
+/*
+=========================================================
+QUESTION 8
+Add NOT NULL constraint to department column
+=========================================================
+*/
+
+ALTER TABLE employees
+MODIFY department VARCHAR(50) NOT NULL;
+
+
+/*
+=========================================================
+QUESTION 9
+Add UNIQUE constraint on name
+=========================================================
+*/
+
+ALTER TABLE employees
+ADD CONSTRAINT unique_name UNIQUE(name);
+
+
+/*
+=========================================================
+QUESTION 10
+Insert new record after adding column
+=========================================================
+*/
+
+INSERT INTO employees(emp_id,name,salary,department,age,city)
+VALUES (4,'Neha',72000,'Finance',28,'Pune');
+
+
+/*
+=========================================================
+QUESTION 11
+Display table structure
+=========================================================
+*/
+
+DESCRIBE employees;
+
+
+/*
+=========================================================
+QUESTION 12
+Rename column name to employee_name
+=========================================================
+*/
+
+ALTER TABLE employees
+RENAME COLUMN name TO employee_name;
+
+
+/*
+=========================================================
+QUESTION 13
+Drop column city from employees table
+=========================================================
+*/
+
+ALTER TABLE employees
+DROP COLUMN city;
+
+
+/*
+=========================================================
+QUESTION 14
+Drop table departments
+=========================================================
+*/
+
+DROP TABLE departments;
+
+
+/*
+=========================================================
+QUESTION 15
+Drop database company_db
+=========================================================
+*/
+
+DROP DATABASE company_db;
