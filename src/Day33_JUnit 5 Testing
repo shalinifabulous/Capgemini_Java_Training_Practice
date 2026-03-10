@@ -1,0 +1,53 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+================================================
+Day 33 - JUnit Testing Practice
+Topics:
+Assertions
+Lifecycle
+Test Methods
+================================================
+*/
+
+class Calculator {
+
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    int subtract(int a, int b) {
+        return a - b;
+    }
+
+    int multiply(int a, int b) {
+        return a * b;
+    }
+}
+
+public class CalculatorTest {
+
+    Calculator calculator = new Calculator();
+
+    @Test
+    void testAddition() {
+
+        int result = calculator.add(5,3);
+
+        assertEquals(8, result);
+    }
+
+    @Test
+    void testSubtraction(){
+
+        assertEquals(2, calculator.subtract(5,3));
+    }
+
+    @Test
+    void testMultiplication(){
+
+        assertEquals(15, calculator.multiply(5,3));
+    }
+
+}
